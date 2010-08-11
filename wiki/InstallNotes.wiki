@@ -14,9 +14,19 @@ Install maven with apt-get
 
 The maven version on debian repo might be too old, if that's the case, [http://maven.apache.org/download.html download maven] tar ball, untar it somewhere, and set a command alias of mvn to the newly downloaded maven binary.
 
-Enter the directory
+`alias mvn=$HOME/apache-maven/bin/mvn`
+
+Enter the code directory
 
 `cd rocksteady-read-only`
+
+Install dependency app
+
+`sudo apt-get install mysql-server-5.0 rabbitmq-server`
+
+Setup SQL table and create rocksteady user and privilege
+
+`sudo mysql < setup.sql`
 
 Run this command to download all rocksteady's Jar dependencies.  Jar is like a tar ball for java to distribute compile binary.
 
@@ -25,3 +35,11 @@ Run this command to download all rocksteady's Jar dependencies.  Jar is like a t
 If anything failed to download, create an "issue" here for others to troubleshoot.
 
 If everything looks good, there will be a new directory called "target" which all the compiled code and library sit in.
+
+`cd target`
+
+Run dev mode
+
+`../run_dev`
+
+run_dev invokes mvn to compile source code then starts rocksteady in dev mode with more verbose log.
