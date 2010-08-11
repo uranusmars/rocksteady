@@ -1,8 +1,6 @@
 #summary Introduction to Rocksteady.
 #sidebar TableOfContents
 
-= Introduction =
-
 Rocksteady is an effort to utilize complex event process engine against user defined metric.  
 
 This project is written by an ops guy who want to learn Java and solve his metric problem.  In documentation, I will probably write things that a real programmar snorts at, I am all ear for criticism.  And I will cover some obvious things in detail because I don't want my fellow ops to be confused as I am when I first entered the wonderful world of Java programming.  
