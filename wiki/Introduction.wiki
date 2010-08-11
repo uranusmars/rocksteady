@@ -3,8 +3,11 @@
 
 Rocksteady is an effort to utilize complex event process engine against user defined metric.  
 
-This project is written by an ops guy who want to learn Java and solve his metric problem.  In documentation, I will probably write things that a real programmar snorts at, I am all ear for criticism.  And I will cover some obvious things in detail because I don't want my fellow ops to be confused as I am when I first entered the wonderful world of Java programming.  
+This project is written by an ops guy who want to learn Java and solve his metric problem.  In documentation, there  will probably be things that a real programmar snorts at, criticism is welcome.  It will probably cover some obvious things in detail because I don't want my fellow ops to be as confused as I am when they first entered the wonderful world of Java programming.  
 
+= Audience=
+
+Ops not scare of getting their hand dirty with a bit of coding and devs who want to monitor their precious app with metric instead of gut feeling.
 
 = Details =
 
@@ -14,9 +17,12 @@ Rocksteady is an application written in Java using Spring framework, build with 
 
 Rocksteady needs:
   * Java 1.5+ 
-  * Maven2 (It's like apt-get + ./configure + make for Java)
-  * Rabbitmq + shovel plugin(optional)
+  * [http://maven.apache.org/ Maven2] (It's like apt-get + ./configure + make for Java)
+  * [http://www.rabbitmq.com/ Rabbitmq] + [http://www.lshift.net/blog/2010/02/01/rabbitmq-shovel-message-relocation-equipment shovel plugin(optional)]
 
 Optional:
-  * Graphite (Orbitz open sourced graphing backend)
-  * GLP, graphite local proxy.  
+  * [http://graphite.wikidot.com/ Graphite] (Orbitz open sourced graphing backend)
+  * [http://www.mail-archive.com/graphite-dev@lists.launchpad.net/msg00411.html GLP], graphite local proxy.  Useful to collect metric, install on each server to collect metric from localhost and forward to configured rabbitmq exchange.
+
+
+InstallNotes
