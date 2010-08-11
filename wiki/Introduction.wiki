@@ -19,10 +19,11 @@ Rocksteady needs:
   * Java 1.5+ 
   * [http://maven.apache.org/ Maven2] (It's like apt-get + ./configure + make for Java)
   * [http://www.rabbitmq.com/ Rabbitmq] + [http://www.lshift.net/blog/2010/02/01/rabbitmq-shovel-message-relocation-equipment shovel plugin(optional)]
+  * Mysql (To track historic data)
 
 Optional:
   * [http://graphite.wikidot.com/ Graphite] (Orbitz open sourced graphing backend)
   * [http://www.mail-archive.com/graphite-dev@lists.launchpad.net/msg00411.html GLP], graphite local proxy.  Useful to collect metric, install on each server to collect metric from localhost and forward to configured rabbitmq exchange.
 
 
-InstallNotes
+For step by step guide, please see InstallNotes.
