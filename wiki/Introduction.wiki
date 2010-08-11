@@ -1,0 +1,24 @@
+#summary Introduction to Rocksteady.
+#sidebar TableOfContents
+
+= Introduction =
+
+Rocksteady is an effort to utilize complex event process engine against user defined metric.  
+
+This project is written by an ops guy who want to learn Java and solve his metric problem.  In documentation, I will probably write things that a real programmar snorts at, I am all ear for criticism.  And I will cover some obvious things in detail because I don't want my fellow ops to be confused as I am when I first entered the wonderful world of Java programming.  
+
+
+= Details =
+
+Too often after collecting many metric and creating many pretty graphs, one realizes graph serves only as a good postmortem analytic aid.  Staring at dozen of graph on a TV wall isn't really monitoring, it's a waste of time.  We want to look for problems as metric being collected.  We need a way to express our knowledge of troubleshooting in code so similar problems can be detected and correlated.  We need to process LOTS of metrics together in order to make sense of our own world.  Thus *rocksteady*.
+
+Rocksteady is an application written in Java using Spring framework, build with Maven, and should run wherever you can install Java.  
+
+Rocksteady needs:
+  * Java 1.5+ 
+  * Maven2 (It's like apt-get + ./configure + make for Java)
+  * Rabbitmq + shovel plugin(optional)
+
+Optional:
+  * Graphite (Orbitz open sourced graphing backend)
+  * GLP, graphite local proxy.  
