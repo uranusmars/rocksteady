@@ -26,4 +26,4 @@ Optional:
   * [http://www.mail-archive.com/graphite-dev@lists.launchpad.net/msg00411.html GLP], graphite local proxy.  Useful to collect metric, install on each server to collect metric from localhost and forward to configured rabbitmq exchange.
 
 
-For step by step guide, please see InstallNotes.
+For step by step installation, please see InstallNotes.
