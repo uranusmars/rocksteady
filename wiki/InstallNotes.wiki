@@ -1,4 +1,5 @@
 #summary Installation note for developer.
+#labels Phase-Implementation
 
 
 Commands to get rocksteady up and running.  Assuming debian
