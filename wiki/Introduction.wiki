@@ -11,9 +11,11 @@ This project is written by an ops guy who want to learn Java and solve his metri
 
 Ops not scare of getting their hand dirty with a bit of coding and devs who want to monitor their precious app with metric instead of gut feeling.
 
-== Details ==
+== History ==
 
 Too often after collecting many metric and creating many pretty graphs, one realizes graph serves only as a good postmortem analytic aid.  Staring at dozen of graph on a TV wall isn't really monitoring, it's a waste of time.  We want to look for problems as metric being collected.  We need a way to express our knowledge of troubleshooting in code so similar problems can be detected and correlated.  We need to process LOTS of metrics together in order to make sense of our own world.  Thus *rocksteady*.
+
+== Requirements ==
 
 Rocksteady is an application written in Java using Spring framework, build with Maven, and should run wherever you can install Java.  
 
