@@ -33,6 +33,8 @@ Still confuse? Hopefully this map gives a good idea what rocksteady does.
 
 http://farm5.static.flickr.com/4095/4886062907_6c2a06b966_o.png
 
+If interested, look at DesignBackground on how we decided on this infrastructure.
+
 For step by step installation, please see InstallNotes.
 
 If you are finish with installation, use this HelloWorldExample to get a feel.
