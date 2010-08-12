@@ -8,7 +8,7 @@ Install java
 
 `sudo apt-get install sun-java6-jre rabbitmq mysql-server`
 
-Install maven with apt-get
+Install maven with apt-get ( If you want to build from source )
 
 `sudo apt-get install maven2`
 
@@ -42,4 +42,4 @@ Run dev mode
 
 `../run_dev`
 
-run_dev invokes mvn to compile source code then starts rocksteady in dev mode with more verbose log.
+run_dev invokes "mvn compile" then starts rocksteady in dev mode with more verbose log.
