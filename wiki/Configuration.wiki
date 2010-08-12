@@ -1,0 +1,4 @@
+#summary All there is to configure.
+
+
+Couple things one will be interested in looking.
