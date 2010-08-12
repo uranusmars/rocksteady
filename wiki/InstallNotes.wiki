@@ -1,3 +1,6 @@
+#summary Installation note for developer.
+
+
 Commands to get rocksteady up and running.  Assuming debian
 
 Check out code
