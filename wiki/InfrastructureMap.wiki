@@ -1,0 +1,3 @@
+#summary One picture to show all components
+
+A look of how everything fits in the picture.
