@@ -1,49 +1,46 @@
 #summary Installation note for developer.
-#labels Phase-Implementation
+#labels Phase-Deploy
 
 
 Commands to get rocksteady up and running.  Assuming debian
 
-Check out code
+===Check out code===
 
-`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`
+*`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`*
 
-Install java
+===Dependecies===
 
-`sudo apt-get install sun-java6-jre rabbitmq mysql-server`
+*`sudo apt-get install sun-java6-jre mysql-server-5.0 rabbitmq-server`*
 
 Install maven with apt-get ( If you want to build from source )
 
-`sudo apt-get install maven2`
+*`sudo apt-get install maven2`*
 
-The maven version on debian repo might be too old, if that's the case, [http://maven.apache.org/download.html download maven] tar ball, untar it somewhere, and set a command alias of mvn to the newly downloaded maven binary.
+`*`_The maven version on debian repo might be too old, if that's the case, [http://maven.apache.org/download.html download maven] tar ball, untar it somewhere, and set a command alias of mvn to the newly downloaded maven binary._
 
-`alias mvn=$HOME/apache-maven/bin/mvn`
+*`alias mvn=$HOME/apache-maven/bin/mvn`*
 
 Enter the code directory
 
-`cd rocksteady-read-only`
-
-Install dependency app
-
-`sudo apt-get install mysql-server-5.0 rabbitmq-server`
+*`cd rocksteady-read-only`*
 
 Setup SQL table and create rocksteady user and privilege
 
-`sudo mysql < setup.sql`
+*`sudo mysql < setup.sql`*
 
+===Source Build===
 Run this command to download all rocksteady's Jar dependencies.  Jar is like a tar ball for java to distribute compile binary.
 
-`mvn package`
+*`mvn package`*
 
 If anything failed to download, create an "issue" here for others to troubleshoot.
 
 If everything looks good, there will be a new directory called "target" which all the compiled code and library sit in.
 
-`cd target`
+*`cd target`*
 
 Run dev mode
 
-`../run_dev`
+*`../run_dev`*
 
 run_dev invokes "mvn compile" then starts rocksteady in dev mode with more verbose log.
