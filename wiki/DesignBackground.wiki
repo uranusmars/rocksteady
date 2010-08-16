@@ -13,7 +13,5 @@ Why sending metric passively?
 
 Why use RabbitMQ, why not send metrics to rocksteady directly?
   * One host can not keep up with thousands of metrics per second.
-  * As shown in the graph, there is other consumer such as Graphite for the same metrics, so having a message queue that supports publish/subscribe model makes distribution very easy.
+  * As shown in the graph, there are other consumers such as Graphite for the same metrics, so having a message queue that supports publish/subscribe model makes distribution very easy.
   * Easier to scale in the future.  Most messaging system supports key routing, that makes adding extra instances of rocksteady as simple as subscribing with new hash key.
-
-
