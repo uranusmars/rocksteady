@@ -3,3 +3,8 @@
 A look of how everything fits in the picture.
 
 http://farm5.static.flickr.com/4095/4886062907_6c2a06b966_o.png
+
+  # Metrics sent from hosts into rabbitmq
+  # Rocksteady and Graphite subscribe to metric.
+  # Graphite writes metric to time series data file.
+  # Rocksteady process the metric according to EPL(sql-like language), output could be either email, nagios, or records in DB.
