@@ -1,4 +1,4 @@
-#summary Installation note for developer.
+#summary Installation
 #labels Phase-Deploy
 
 
