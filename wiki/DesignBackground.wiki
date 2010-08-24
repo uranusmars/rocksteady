@@ -1,16 +1,3 @@
-#summary Design background, why we did what we did.
-
-Most of the topic refer to components in this image.
-
-http://farm5.static.flickr.com/4095/4886062907_6c2a06b966_o.png
-
-  # Metrics sent from hosts into rabbitmq
-  # Rocksteady and Graphite subscribe to metric.
-  # Graphite writes metric to time series data file.
-  # Rocksteady process the metric according to EPL(sql-like language), output could be either email, nagios, or records in DB. 
-
-== Why ==
-
 Why sending metric passively?
   * One host polling thousands of hosts are inefficient and hard problem to solve.
   * It's hard to maintain list of hosts/metrics to pull.
