@@ -6,9 +6,24 @@ Sending metric needs to be easy.  That's the premise we set out when we were des
 
 == Details ==
 
-There are two ways to send metric:
- # Send via GLP(Graphite Local Proxy), MQ independent.
- # Use RabbitMQ library to send directly to message exchange.
+We send our metrics in two ways:
+ # Send via local daemon, MQ independent.
+ # Send using RabbitMQ library to send directly to message exchange.
 
- === Send via GLP ===
+=== Send via local daemon ===
 
+Create a daemon to listen for metric string and forward it to configured RabbitMQ server and exchange.  Admob has released an implementation written in Python.  You can check it out from launchpad
+
+bzr = bazaar source control
+{{{
+bzr branch lp:~zirpu/graphite/admob.branch
+cd admob.branch/graphite_local_proxy
+make pkg
+dpkg -i ../graphite-local-proxy_1.0.0-0_all.deb
+}}}
+
+You'll need to edit /etc/default/graphite_local_proxy for rabbitmq server, vhost, exchange, and etc.  
+
+=== Send using RabbitMQ client ===
+
+Many language has a client library, check this [http://www.rabbitmq.com/how.html Rabbitmq page] for detail info. 
