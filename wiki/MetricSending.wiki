@@ -22,7 +22,33 @@ make pkg
 dpkg -i ../graphite-local-proxy_1.0.0-0_all.deb
 }}}
 
-You'll need to edit /etc/default/graphite_local_proxy for rabbitmq server, vhost, exchange, and etc.  
+Once package is installed, you'll need to edit /etc/default/graphite_local_proxy for rabbitmq server, vhost, exchange, and etc.  
+
+Once you have daemon up and running(default port is 2003), you can send metric with simple netcat
+
+In Shell
+{{{
+echo '1min.system.cpu.prct_idle 80 1283207115' | nc localhost 2003
+}}}
+
+In Python
+{{{
+#!/usr/bin/python           # This is server.py file
+
+import socket               # Import socket module
+
+s = socket.socket()         # Create a socket object
+host = 'localhost' # Get local machine name
+port = 2003                # Reserve a port for your service.
+
+s.connect((host, port))
+s.send('1min.system.cpu.prct_idle 80 1283207115')
+s.close                     # Close the socket when done
+}}}
+
+In Java
+
+[http://zerioh.tripod.com/ressources/sockets.html Simple socket]
 
 === Send using RabbitMQ client ===
 
