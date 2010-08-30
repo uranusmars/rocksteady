@@ -47,9 +47,25 @@ s.close                     # Close the socket when done
 }}}
 
 In Java
+{{{
+// Create a socket without a timeout
+try {
+  InetAddress addr = InetAddress.getByName("localhost");
+  int port = 2003;
 
-[http://zerioh.tripod.com/ressources/sockets.html Simple socket]
+  // This constructor will block until the connection succeeds
+  Socket socket = new Socket(addr, port);
+} catch (UnknownHostException e) {
+} catch (IOException e) {
+}
 
+try {
+    BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+    wr.write("1min.system.cpu.prct_idle 80 1283207115");
+    wr.flush();
+} catch (IOException e) {
+}
+}}}
 === Send using RabbitMQ client ===
 
 Many language has a client library, check this [http://www.rabbitmq.com/how.html Rabbitmq page] for detail info. 
