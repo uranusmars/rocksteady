@@ -24,7 +24,7 @@ dpkg -i ../graphite-local-proxy_1.0.0-0_all.deb
 
 Once package is installed, you'll need to edit /etc/default/graphite_local_proxy for rabbitmq server, vhost, exchange, and etc.  
 
-Once you have daemon up and running(default port is 2003), you can send metric with simple netcat
+Once you have daemon up and running(default listening port is 2003), you can send metric with simple netcat
 
 In Shell
 {{{
