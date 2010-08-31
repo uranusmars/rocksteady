@@ -4,15 +4,28 @@
 
 Commands to get rocksteady up and running.  Assuming debian
 
-===Check out code===
-
-*`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`*
-
-===Dependecies===
+==Dependecies==
 
 *`sudo apt-get install sun-java6-jre mysql-server-5.0 rabbitmq-server`*
 
-Install maven with apt-get ( If you want to build from source )
+Setup SQL table and create rocksteady user and privilege
+
+*`sudo mysql < setup.sql`*
+
+==Using Distribution Build==
+
+Download newest distribution from http://code.google.com/p/rocksteady/downloads/list
+
+{{{
+unzip rocksteady-*
+cd rocksteady-*
+./start.sh 
+}}}
+
+==Running from Source==
+Run this command to download all rocksteady's Jar dependencies.  Jar is like a tar ball for java to distribute compile binary.
+
+Install maven ( Java source build helper)
 
 *`sudo apt-get install maven2`*
 
@@ -20,16 +33,11 @@ Install maven with apt-get ( If you want to build from source )
 
 *`alias mvn=$HOME/apache-maven/bin/mvn`*
 
+*`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`*
+
 Enter the code directory
 
 *`cd rocksteady-read-only`*
-
-Setup SQL table and create rocksteady user and privilege
-
-*`sudo mysql < setup.sql`*
-
-===Source Build===
-Run this command to download all rocksteady's Jar dependencies.  Jar is like a tar ball for java to distribute compile binary.
 
 *`mvn package`*
 
@@ -41,6 +49,9 @@ If everything looks good, there will be a new directory called "target" which al
 
 Run dev mode
 
-*`../run_dev`*
+*`../run_dev.sh`*
 
 run_dev invokes "mvn compile" then starts rocksteady in dev mode with more verbose log.
+
+==Now What?==
+Now that your instance of Rocksteady is running, we want to start to feed it some metrics.  Easiest way to do so is to use message publishing scripts that come with Rocksteady.  See [http://code.google.com/p/rocksteady/wiki/MetricSending#Testing Metric Sending] for detail.
