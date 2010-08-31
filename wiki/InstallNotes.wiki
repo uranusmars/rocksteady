@@ -5,6 +5,7 @@
 Commands to get rocksteady up and running.  Assuming debian
 
 ==Dependecies==
+Use your OS equivalent of debian apt-get for following packages.
 
 *`sudo apt-get install sun-java6-jre mysql-server-5.0 rabbitmq-server`*
 
