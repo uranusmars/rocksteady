@@ -91,3 +91,14 @@ public class Client {
 === Send using RabbitMQ client ===
 
 Many language has a client library, check this [http://www.rabbitmq.com/how.html Rabbitmq page] for detail info. 
+
+==Testing==
+
+Rocksteady comes a pair of publisher and consumer python script that can be useful for testing AMQP service.  Inside *scripts/* directory, modify setting.py if you use a different credential or exchange for RabbitMQ.  
+
+Start publishing message by running
+{{{
+python amqp_publisher.py
+}}}
+
+if your instance of Rocksteady is running, it should be seeing the metric and making minutely aggregation by now.
