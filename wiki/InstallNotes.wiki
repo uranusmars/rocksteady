@@ -24,7 +24,12 @@ cd rocksteady-*
 }}}
 
 ==Running from Source==
-Run this command to download all rocksteady's Jar dependencies.  Jar is like a tar ball for java to distribute compile binary.
+
+*`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`*
+
+Enter the code directory
+
+*`cd rocksteady-read-only`*
 
 Install maven ( Java source build helper)
 
@@ -34,11 +39,7 @@ Install maven ( Java source build helper)
 
 *`alias mvn=$HOME/apache-maven/bin/mvn`*
 
-*`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`*
-
-Enter the code directory
-
-*`cd rocksteady-read-only`*
+Run this command to download all rocksteady's Jar dependencies.  Jar is like a tar ball for java to distribute compile binary.
 
 *`mvn package`*
 
