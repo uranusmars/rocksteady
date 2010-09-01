@@ -2,6 +2,8 @@
 
 Rocksteady started with [http://www.springsource.org/roo Spring Roo] to create application skeleton, so a few configuration were created automatically.  
 
+*In source, config files are in src/main/resources/META-INF*
+
 {{{
 malin@kaohsiung:/tmp/rocksteady-1.0.0/classes/META-INF$ ls -lR
 .:
@@ -23,4 +25,4 @@ total 44
 -rw-r----- 1 malin eng  2372 Sep  1 11:40 timerTasks.xml
 }}}
 
-||rocksteady.properties||Property files just have bunch of key=value lines in it.  The keys can later be used in configuration XML.  Think of it as list of variables that can be used later.  Key is referred in XML with something like ${database.url}.||
+||rocksteady.properties||Property files just have bunch of key=value lines in it.  The keys can later be used in configuration XML, which will look like ${database.url}.||
