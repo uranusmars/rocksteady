@@ -15,7 +15,7 @@ Start publishing message by running
 python amqp_publisher.py
 }}}
 
-if your instance of Rocksteady is running, it should be seeing the metric and making minutely aggregation by now.
+if your instance of Rocksteady is running, it should be seeing the metric and making minutely aggregation.
 
 == Details ==
 
