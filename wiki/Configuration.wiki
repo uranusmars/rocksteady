@@ -33,6 +33,6 @@ total 44
 ||database.properties||Database connection setting.||
 ||email.xml||Email setting and basic template, used in email notification.||
 ||epl.xml||Contains list of query from eplStatements.xml to run against metric we're collecting.||
-||eplStatements.xml||Contains actual queries written in Esper Processing Language(similar to SQL).
+||eplStatements.xml||Contains actual queries written in Esper Processing Language(similar to SQL).||
 ||log4j.properties{.production}||Logging setting.  Production version is less verbose.||
 ||timerTasks.xml||Contains some timer tasks such as old data purge.||
