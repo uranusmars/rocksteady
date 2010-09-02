@@ -27,12 +27,12 @@ total 44
 
 *`*.properties` are property files that has bunch of key=value lines in it.  The value can then be used later in configuration XML by referring to key as ${key}.*
 
-||aop-ajc.xml,persistence.xml||Spring Roo auto generated configs, no touchy unless going through Roo||
+||aop-ajc.xml,persistence.xml||Spring Roo auto generated configs, no touchy unless going through Roo.||
 ||rocksteady.properties||App setting, rabbitmq setting, email server, etc.||
-||applicationContext.xml||Spring framework configuration.  It tells Spring what to do, including bean initiation, service start/shutdow, pass keys from property files to Java classes||
-||database.properties||Database connection setting||
-||email.xml||Email setting and basic template, used in email notification||
-||epl.xml||Contains list of query from eplStatements.xml to run against metric we're collecting||
+||applicationContext.xml||Spring framework configuration.  It tells Spring what to do, including bean initiation, service start/shutdow, pass keys from property files to Java classes.||
+||database.properties||Database connection setting.||
+||email.xml||Email setting and basic template, used in email notification.||
+||epl.xml||Contains list of query from eplStatements.xml to run against metric we're collecting.||
 ||eplStatements.xml||Contains actual queries written in Esper Processing Language(similar to SQL).
-||log4j.properties{.production}||Logging setting.  Production version is less verbose||
+||log4j.properties{.production}||Logging setting.  Production version is less verbose.||
 ||timerTasks.xml||Contains some timer tasks such as old data purge.||
