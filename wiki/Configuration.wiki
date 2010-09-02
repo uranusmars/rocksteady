@@ -2,7 +2,7 @@
 
 Rocksteady started with [http://www.springsource.org/roo Spring Roo] to create application skeleton, so a few configuration were created automatically.  
 
-*In source, config files are in src/main/resources/META-INF*
+*In source, config files are in [http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/ src/main/resources/META-INF]*
 
 {{{
 malin@kaohsiung:/tmp/rocksteady-1.0.0/classes/META-INF$ ls -lR
