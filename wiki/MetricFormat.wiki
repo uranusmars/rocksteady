@@ -12,7 +12,7 @@ A metric strings takes the following form:
 retention.app_name.component+.colo.hostname value unix_timestamp
 }}}
 
-||retention||Graphite use it to determine data storing interva.  We use 10sec,1min,5min,15minl||
+||retention||Graphite use it to determine data storing interval.  We use 10sec,1min,5min,15minl||
 ||app_name||Application Name||
 ||component+||Any number of level of component.  For ex: cpu.user or iostate.tps.device.sda||
 ||colo||Colocation name||
