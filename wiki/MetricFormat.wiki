@@ -2,7 +2,7 @@
 
 == Introduction ==
 
-Rocksteady was originally design to analyze the same metric string that was meant for Graphite.  The end result turns out to be a solution so easy to work with, we stick with it.  If this scheme doesn't work for you, Rocksteady needs to be modified to understand the new scheme.  I would suggest to give this a try.  Because it's just a simple one liner string to create metric, it was easy to ask others to adopt.
+Rocksteady was originally design to analyze the same metric string that was meant for [http://graphite.wikidot.com/ Graphite].  The end result turns out to be a solution so easy to work with, we stick with it.  If this scheme doesn't work for you, Rocksteady needs to be modified to understand the new scheme.  I would suggest to give this a try.  Because it's just a simple one liner string to create metric, it was easy to ask others to adopt.
 
 
 == Format ==
