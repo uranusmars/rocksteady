@@ -23,11 +23,11 @@ retention.app_name.component+.colo.hostname value unix_timestamp
 For example, we script around unix sar command to gather system metrics and for cpu they look like the following:
 
 {{{
-1min.juicer.system.cpu.prct_idle 82 1283192317
-1min.juicer.system.cpu.prct_nice 1 1283192317
-1min.juicer.system.cpu.prct_iowait 5 1283192317
-1min.juicer.system.cpu.prct_system 7 1283192317
-1min.juicer.system.cpu.prct_user 5 1283192317
+1min.juicer.system.cpu.prct_idle.dc1.pi101 82 1283192317
+1min.juicer.system.cpu.prct_nice.dc1.pi101 1 1283192317
+1min.juicer.system.cpu.prct_iowait.dc1.pi101 5 1283192317
+1min.juicer.system.cpu.prct_system.dc1.pi101 7 1283192317
+1min.juicer.system.cpu.prct_user.dc1.pi101 5 1283192317
 }}}
 
 Each line is send to MQ as a message.  Graphite picks them up and store in whisper(RRD-like) files for later graphing and query.  Rocksteady picks them up and continuously query against them. 
