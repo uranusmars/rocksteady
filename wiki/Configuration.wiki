@@ -25,7 +25,7 @@ total 44
 -rw-r----- 1 malin eng  2372 Sep  1 11:40 timerTasks.xml
 }}}
 
-*`*.properties` are property files that has bunch of key=value lines in it.  The value can then be used later in configuration XML by referring to key as ${key}.*
+*`*.properties` are files with bunch of key=value lines in it.  The value can then be used in configuration XML by referring to key as ${key}.*
 
 ||aop-ajc.xml,persistence.xml||Spring Roo auto generated configs, no touchy unless going through Roo.||
 ||rocksteady.properties||App setting, rabbitmq setting, email server, etc.||
