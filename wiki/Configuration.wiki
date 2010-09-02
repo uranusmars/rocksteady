@@ -25,4 +25,4 @@ total 44
 -rw-r----- 1 malin eng  2372 Sep  1 11:40 timerTasks.xml
 }}}
 
-||rocksteady.properties||Property files has key=value lines in it.  Can be used in configuration XML which looks like ${database.url}.||
+||rocksteady.properties||Property files has key=value lines in it.  Used in configuration XML with ${key}.||
