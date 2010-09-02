@@ -15,7 +15,12 @@ Start publishing message by running
 python amqp_publisher.py
 }}}
 
-if your instance of Rocksteady is running, it should be seeing the metric and making minutely aggregation.
+Then run consumer to see the messages are going through MQ correctly.
+{{{
+python amqp_consumer.py
+}}}
+
+if your instance of Rocksteady with default config is running, it should be making minutely aggregation once a minute.
 
 == Details ==
 
