@@ -32,7 +32,7 @@ We send our metrics in two ways:
  # Send via local daemon, MQ independent.
  # Send using RabbitMQ library to send directly to message exchange.
 
-=== Send via local daemon ===
+=== Send to regular tcp port ===
 
 Create a daemon to listen for metric string and forward it to configured RabbitMQ server and exchange.  Admob has released an implementation written in Python.  You can check it out from launchpad
 
