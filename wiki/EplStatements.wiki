@@ -15,6 +15,8 @@ This, is how CEP process data in real time.  Because EPL processes  data as they
 
 == Details ==
 
+When metrics come from application into MQ and Rocksteady consumes them, it parses the metric and converts it to a POJO(plain old java object) which is then feed into Esper CEP engine.  Esper will then run all the statements against this new pojo and what comes out depend on the statement.  It could be an aggregation statement which just add the value to existing value, or it could be a threshold statement which might trigger an email or Nagios alert or it could be a correlation statement which needs further processing by other statement.
+
 Assuming we are using [MetricFormat default metric convention],
 
 {{{retention.app_name.component+.colo.hostname value unix_timestamp}}}
@@ -30,3 +32,23 @@ these are the field name that's available to use in query.:
   private String hostname = "";
   private String app = "";
 }}}
+
+||name||Metric name||
+||value||Metric value||
+||timestamp||Epoch timestamp||
+||retention||Retention string||
+||colo||Colocation||
+||hostname||Short hostname||
+||app||App name||
+
+So for metric string
+
+{{{1min.juicer.system.cpu.prct_idle.dc1.pi101 82 1283192317}}}
+
+||name||system.cpu.prct_idle||
+||value||82||
+||timestamp||1283192317||
+||retention||1min||
+||colo||dc1||
+||hostname||pi101||
+||app||juicer||
