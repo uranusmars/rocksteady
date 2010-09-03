@@ -1,0 +1,32 @@
+#summary How to add more queries.
+
+== Introduction ==
+
+Here we are going to cover adding your own statement to Rocksteady.  EPL(Esper Processing Language) is a language used in [http://esper.codehaus.org/ Esper], Rocksteady's choice of complex event processing engine.  EPL looks similar to SQL with "select", "from", or "where" in its syntax, the biggest difference between EPL and SQL is the data source.  In SQL, query is ran against data already stored in a database.  In EPL, query is ran against data as they arrive.
+
+Case in point:
+
+*SELECT `*` FROM metrics WHERE value > 80*
+
+||SQL||Return all rows from a table named "metrics" where a field named "value" has a value larger than 80.  Data is in database.||
+||EPL||Whenever new data arrive, query is executed and it will return all POJO(plain old java object) that has attribute named "value" larger than 80||
+
+This, is how CEP process data in real time.  Because EPL processes  data as they come in, there are a few additional language feature that's applicable to EPL such as setting time window of the data.
+
+== Details ==
+
+Assuming we are using [MetricFormat default metric convention],
+
+{{{retention.app_name.component+.colo.hostname value unix_timestamp}}}
+
+these are the field name that's available to use in query.:
+
+{{{
+  private String name;
+  private Double value;
+  private Double timestamp;
+  private String retention = "";
+  private String colo = "";
+  private String hostname = "";
+  private String app = "";
+}}}
