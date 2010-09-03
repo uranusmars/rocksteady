@@ -19,7 +19,7 @@ Download newest distribution from http://code.google.com/p/rocksteady/downloads/
 unzip rocksteady-*
 cd rocksteady-*
 #Setup SQL table and create rocksteady user and privilege
-*`sudo mysql < setup.sql`*
+`sudo mysql < setup.sql`
 ./start.sh 
 }}}
 
