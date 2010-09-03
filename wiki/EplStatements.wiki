@@ -46,3 +46,27 @@ So for metric string
 ||hostname||pi101||
 ||value||82||
 ||timestamp||1283192317||
+
+A statement could look something like this: (From [http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/eplStatements.xml eplStatement.xml])
+
+{{{
+  <bean class="com.admob.rocksteady.router.cep.StatementBean" id="metricAveraged">
+  <constructor-arg value="SELECT name, colo, avg(value)  as value, retention, app
+                          FROM Metric(app='admixer' or app='ustore').std:groupby(colo,name,app).win:time_batch(${cepTimeBatchEverest} sec)
+                          GROUP BY name, colo, retention, app                                                                                                  
+                          "/>
+    <property name="listeners">
+     <list>
+       <bean class="com.admob.rocksteady.reactor.Graphite">
+           <property name="suffix" value="averaged"/>
+       </bean>    
+     </list>
+    </property>
+  </bean>
+}}}
+
+For none Java folks, bean is like little piece of code that can be used later in other places.  Instead of coding actual Java, you can see from the statement above, we initiate a new com.admob.rocksteady.router.cep.StatementBean class with value in constructor-arg, gave it an 'ID', then set one of its property "listeners" with another bean.
+
+The id "metricAveraged" is then used in [http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/epl.xml epl.xml] to tell Esper what statements to load.
+ 
+For detail documentation on EPL, please refer to [http://esper.codehaus.org/esper/documentation/documentation.html Esper documentation].
