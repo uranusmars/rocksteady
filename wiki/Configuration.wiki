@@ -30,11 +30,11 @@ total 44
 *`*.properties` are files with bunch of key=value lines in it.  The value can then be used in configuration XML by referring to key as ${key}.  So for any ${key} refer in XML, just grep that "key" from .properties to find the value.*
 
 ||aop-ajc.xml,persistence.xml||Spring Roo auto generated configs, no touchy unless going through Roo.||
-||rocksteady.properties||App setting, rabbitmq setting, email server, etc.||
-||applicationContext.xml||Spring framework configuration.  It tells Spring what to do, including bean initiation, service start/shutdow, pass keys from property files to Java classes.||
-||database.properties||Database connection setting.||
+||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/rocksteady.properties rocksteady.properties]||App setting, rabbitmq setting, email server, etc.||
+||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/applicationContext.xml  applicationContext.xml]||Spring framework configuration.  It tells Spring what to do, including bean initiation, service start/shutdow, pass keys from property files to Java classes.||
+||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/database.properties database.properties]||Database connection setting.||
 ||email.xml||Email setting and basic template, used in email notification.||
-||epl.xml||Contains list of query from eplStatements.xml to run against metric we're collecting.||
+||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/epl.xml epl.xml]||Contains list of query from eplStatements.xml to run against metric we're collecting.  It can also contain epl statements.||
 ||eplStatements.xml||Contains actual queries written in Esper Processing Language(similar to SQL).||
 ||log4j.properties{.production}||Logging setting.  Production version is less verbose.||
 ||timerTasks.xml||Contains some timer tasks such as old data purge.||
