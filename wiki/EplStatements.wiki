@@ -6,12 +6,39 @@ Here we are going to cover adding your own statement to Rocksteady.  EPL(Esper P
 
 Case in point:
 
-*SELECT `*` FROM metrics WHERE value > 80*
+*SELECT `*` FROM metric WHERE value > 80*
 
-||SQL||Return all rows from a table named "metrics" where a field named "value" has a value larger than 80.  Data is in database.||
-||EPL||Whenever new data arrive, query is executed and it will return all POJO(plain old java object) that has attribute named "value" larger than 80||
+||SQL||Return all rows from a table named "metric" where a field named "value" has a value larger than 80.  Data is in database.||
+||EPL||Whenever new "metric" POJO is fed into Esper, query is executed and it will return all POJO(plain old java object) that has attribute named "value" larger than 80||
 
 This, is how CEP process data in real time.  Because EPL processes  data as they come in, there are a few additional language feature that's applicable to EPL such as setting time window of the data.
+
+BTW, a POJO is just a simple java class with properties and getter/setter for those properties.
+
+Here's a simple POJO called metric.
+{{{
+public class Metric {
+
+	private String name;
+	private Double value;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getValue() {
+		return value;
+	}
+
+	public void setValue(Double value) {
+		this.value = value;
+	}
+
+}}}
 
 == Details ==
 
