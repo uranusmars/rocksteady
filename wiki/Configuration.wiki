@@ -1,4 +1,4 @@
-#summary All there is to configure.
+#summary What are all the config files.
 
 Rocksteady started with [http://www.springsource.org/roo Spring Roo] to create application skeleton, so a few configuration were created automatically.  
 
