@@ -129,4 +129,4 @@ Then follow by:
 
 {{{win:time_batch(${cepTimeBatchEverest} sec)}}}
 
-${cepTimeBatchEverest} is "60", you can find it in rocksteady.properties file.  This filter instruct Esper to gather minutely data set.  Every 60 seconds, current POJO in dataset is output and discarded, and new data is stored until the next batch interval.  There are many different data set scheme, it could be time based, it could be size based, read about it on [http://esper.codehaus.org/esper-3.5.0/doc/reference/en/html_single/index.html#processingmodel_time_window this section of Esper doc].
+${cepTimeBatchEverest} is "60", you can find it in rocksteady.properties file.  This filter instruct Esper to gather minutely data set.  Every 60 seconds, current POJO in dataset is outputted and discarded, and new data is stored until the next batch interval.  There are many different data set scheme, it could be time based, it could be size based, read about it on [http://esper.codehaus.org/esper-3.5.0/doc/reference/en/html_single/index.html#processingmodel_time_window this section of Esper doc].
