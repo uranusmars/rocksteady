@@ -8,7 +8,7 @@ Sending metric needs to be easy.  That's the premise we set out when we were des
 
 For simple metric sending/receiving test, following instruction can be useful.
 
-Rocksteady comes with a pair of publisher and consumer python scripts to test AMQP service.  Inside *scripts/* directory, modify setting.py if you use a different credential or exchange for RabbitMQ.  
+Rocksteady comes with a pair of publisher and consumer python scripts to test AMQP service.  Inside [http://rocksteady.googlecode.com/svn/trunk/scripts/ *scripts/*] directory, modify setting.py if you use a different credential or exchange for RabbitMQ.  
 
 These scripts needs python module amqplib, debian can be installed via
 
