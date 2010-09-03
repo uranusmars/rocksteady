@@ -106,3 +106,27 @@ GROUP BY name, colo, retention, app
 }}}
 
 This EPL look for metrics with app name equal to 'admixer' or 'ustore', then group them by colo, name, and app and set a time window of ${cepTimeBatchEverest} seconds for each unique group by.  Then at output time, we have another GROUP BY so rows in time batch window is output once and used aggregate function avg() to calculate average value of this metric name per colo and app.
+
+I think anyone who's familiar with SQL was fine with the statement until they see
+
+{{{Metric(app='admixer' or app='ustore').std:groupby(colo,name,app).win:time_batch(${cepTimeBatchEverest} sec)}}}
+
+and went WTF!
+
+Those are the subtle differences between SQL and EPL.  EPL was meant to process data as they arrive, so there are a few technique to limit number of POJO that query needs to run against.  First thing is this syntax call 'filter':
+
+{{{Metric(app='admixer' or app='ustore')}}}
+
+Filter is ran before POJO enters the statement and it's cheap, think of it as limiting input.  The same statement could have been rewritten using WHERE clause like "WHERE app = 'admixer' or app = 'ustore'", but WHERE clause is used to limit output rows which is more intensive.
+
+Then statement is followed by 
+
+{{{std:groupby(colo,name,app)}}}
+
+which you can read the difference from [http://esper.codehaus.org/esper-3.5.0/doc/reference/en/html_single/index.html#epl-group-by-versus-view Eper doc's groupby section].
+
+Then follow by:
+
+{{{win:time_batch(${cepTimeBatchEverest} sec)}}}
+
+${cepTimeBatchEverest} is "60", you can find it in rocksteady.properties file.  This filter instruct Esper to gather minutely data set.  Every 60 seconds, current POJO in dataset is output and discarded, and new data is stored until the next batch interval.  There are many different data set scheme, it could be time based, it could be size based, read about it on [http://esper.codehaus.org/esper-3.5.0/doc/reference/en/html_single/index.html#processingmodel_time_window this section of Esper doc].
