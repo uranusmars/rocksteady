@@ -70,3 +70,12 @@ For none Java folks, bean is like little piece of code that can be used later in
 The id "metricAveraged" is then used in [http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/epl.xml epl.xml] to tell Esper what statements to load.
  
 For detail documentation on EPL, please refer to [http://esper.codehaus.org/esper/documentation/documentation.html Esper documentation].
+
+Let's look at what this statement does:
+{{{
+SELECT name, colo, avg(value)  as value, retention, app
+                          FROM Metric(app='admixer' or app='ustore').std:groupby(colo,name,app).win:time_batch(${cepTimeBatchEverest} sec)
+                          GROUP BY name, colo, retention, app  
+}}}
+
+This EPL look for metrics with app name equal to 'admixer' or 'ustore', then group them by colo, name, and app and set a time window of ${cepTimeBatchEverest} section for each unique group by.  Then at output time, we have another GROUP BY so rows in time batch window is output once.
