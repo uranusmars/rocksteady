@@ -35,6 +35,6 @@ total 44
 ||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/database.properties database.properties]||Database connection setting.||
 ||email.xml||Email setting and basic template, used in email notification.||
 ||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/epl.xml epl.xml]||Contains list of query from eplStatements.xml to run against metric we're collecting.  It can also contain epl statements.||
-||eplStatements.xml||Contains actual queries written in Esper Processing Language(similar to SQL).||
+||[http://rocksteady.googlecode.com/svn/trunk/src/main/resources/META-INF/spring/eplStatements.xml eplStatements.xml]||Contains actual queries written in Esper Processing Language(similar to SQL).||
 ||log4j.properties{.production}||Logging setting.  Production version is less verbose.||
 ||timerTasks.xml||Contains some timer tasks such as old data purge.||
