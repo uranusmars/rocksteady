@@ -143,6 +143,6 @@ Last piece on that statement is
     </property>
 }}}
 
-If statement needs to output anything, we use a "listener" to listen for data that statement captures.  In this statement, the minutely average of all "admixer" and "ustore" metrics per colo, per application is sent out using Graphite and a suffix "averaged" is added to the original metric name.
+If statement needs to output anything, we use a "listener" to listen for data that statement captures.  In this statement, the minutely average of all "admixer" and "ustore" metrics per colo, per application is sent out using Graphite and a suffix "averaged" is added to the original metric name.  Note: you can have multiple listeners for one statement.
 
 For more information on available listeners or write your own, refer to [EplListener Epl Listener Wiki].
