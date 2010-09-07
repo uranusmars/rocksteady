@@ -37,7 +37,7 @@ public class Metric {
 	public void setValue(Double value) {
 		this.value = value;
 	}
-
+}
 }}}
 
 == Details ==
