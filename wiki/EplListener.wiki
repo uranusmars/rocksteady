@@ -1,0 +1,27 @@
+#summary Listener info for statement bean
+
+= Introduction =
+
+Listeners in a statement bean is used to play with data an EPL query capture.
+
+For example, following listener will send captured metric to configured graphite host.
+
+{{{
+    <property name="listeners">
+     <list>
+       <bean class="com.admob.rocksteady.reactor.Graphite">
+           <property name="suffix" value="averaged"/>
+       </bean>    
+     </list>
+    </property>
+}}}
+
+
+= Details =
+
+There are couple listener Rocksteady come with, [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/ see them here].
+
+We'll cover three that's better tested
+ # Email
+ # RRD
+ # Nagios
