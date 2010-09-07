@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Listeners in a statement bean is used to play with data an EPL query capture.
+Listeners in a statement bean is used to play with data an EPL query capture.  This is where most of us will do customization to Rocksteady.  Each of us probably have different need for the data that was captured by EPL, for instance, for some data, it saves them to DB for later analysis, for some, it emails the data.
 
 For example, following listener will send captured metric to configured graphite host.
 
@@ -16,12 +16,20 @@ For example, following listener will send captured metric to configured graphite
     </property>
 }}}
 
+Sometimes, there will be statement bean without any listener, chances are, they are just collecting data to be used by other statements.
 
 = Details =
 
-There are couple listener Rocksteady come with, [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/ see them here].
+As mention before, listener is where most people will do their customization.   "SELECT" in EPL or SQL declare output fields.  Since POJO is fed into Esper, POJO properties are fields available for "SELECT" as well as aggregation function such as "avg()" or "max()".
 
-We'll cover three that's better tested
- # Email
- # RRD
+There are couple listener Rocksteady comes with, look for them in [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/  this source location].
+
+
+We'll cover two listener that's used regularly.
+ # Alerting
  # Nagios
+
+==Alerting==
+
+Alerting reactor is an all purpose reactor.  It is used to record data to db or simply write a log line.  Behavior is determined by value supplied to a property  named "type" in each instance of Alerting bean.  
+ 
