@@ -63,3 +63,48 @@ In [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rockstead
 }}}
 
 Which Esper will feed the method with new POJO that was captured and old POJO that was evicted out of data window.
+
+This is the for loop inside the method to go through the events
+{{{
+    for (EventBean newEvent : newEvents) {
+      i++;
+      try {
+        String msg = "";
+        String _subject = "";
+        // This is how string comparison is done in JAVA, not ==
+        if (type.equals("log")) {
+          String name = newEvent.get("name").toString();
+          // String value = newEvent.get("value").toString();
+          String error = newEvent.get("error").toString();
+          String count = newEvent.get("count").toString();
+
+          msg = name + " - " + error + " - " + count + " errors.";
+
+        } else if (type.equals("latency_single")) {
+          String hostname = newEvent.get("hostname").toString();
+          String name = newEvent.get("name").toString();
+          String value = newEvent.get("value").toString();
+          String colo = newEvent.get("colo").toString();
+          String app = newEvent.get("app").toString();
+
+          String graphiteTs = newEvent.get("timestamp").toString();
+
+
+          msg = colo + " - " + hostname + " - " + app + " - " + name + " - " + value;
+
+          Threshold threshold = new Threshold();
+          threshold.setName(name);
+          threshold.setHostname(hostname);
+          threshold.setColo(colo);
+          threshold.setApp(app);
+          threshold.setGraphiteTs(graphiteTs);
+          threshold.setGraphiteValue(value);
+          threshold.setCreateOn(sqlDate);
+          threshold.persist();
+
+          msg = msg + "\n" + "http://" + rsweb + "/rsweb/threshold.php?id="
+              + String.valueOf(threshold.getId());
+          _subject = this.subject + " - " + colo + " - " + hostname;
+      }
+}}}
+So fo latency_single, it expects the event to have hostname,name,value,colo, app and timestamp.  It builds a message based on those info, it then save the data to database, and append to msg with a web link to an app "rsweb" that's used for manual event correlation.
