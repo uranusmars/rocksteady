@@ -99,7 +99,17 @@ This is the for loop inside the method to go through the events
           _subject = this.subject + " - " + colo + " - " + hostname;
       }
 }}}
-So fo latency_single, it expects the event to have hostname,name,value,colo, app and timestamp.  It builds a message based on those info, it then save the data to database, and append to msg with a web link to an app "rsweb" that's used for manual event correlation.
+So fo latency_single, it expects the event to have hostname,name,value,colo, app and timestamp.  It builds a message based on those info, it then save the data to database, and append to msg with a web link to an app "rsweb" that's used for manual event correlation.  The *msg* can then print to log or email out if we supplied a recipients property like this:
+{{{
+       <bean class="com.admob.rocksteady.reactor.Alerting">
+           <property name="type" value="averagedThreshold"/>
+           <property name="recipients">
+             <list>
+               <value>email@myteam.com</value>
+             </list>
+           </property>
+       </bean>
+}}} 
 
 == Nagios ==
 Initiate it same way as other listener.  Need to set two property, "level" and "service".  Level is the level of criticality, 1=warning, 2=critical, 3=unknown.  Service is the service name to trigger.
