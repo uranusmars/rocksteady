@@ -34,7 +34,7 @@ I am hoping by covering two of listener, user can see how easy it is to create y
 
 ==Alerting==
 
-Alerting reactor is an all purpose reactor.  It is used to record data to db or simply write a log line.  Behavior is determined by value supplied to a property  named "type" in each instance of Alerting bean.  Let's use a statement bean as example:
+Alerting reactor is an all purpose reactor(that means messy code).  It is used to record data to db or simply write a log line.  Behavior is determined by value supplied to a property  named "type" in each instance of Alerting bean.  Let's use a statement bean as example:
 
 {{{
   <bean class="com.admob.rocksteady.router.cep.StatementBean" id="requestTimeOut">
@@ -108,3 +108,71 @@ This is the for loop inside the method to go through the events
       }
 }}}
 So fo latency_single, it expects the event to have hostname,name,value,colo, app and timestamp.  It builds a message based on those info, it then save the data to database, and append to msg with a web link to an app "rsweb" that's used for manual event correlation.
+
+== Nagios ==
+Initiate it same way as other listener.  Need to set two property, "level" and "service".  Level is the level of criticality, 1=warning, 2=critical, 3=unknown.  Service is the service name to trigger.
+
+{{{
+       <bean class="com.admob.rocksteady.reactor.Nagios">
+           <property name="service" value="request_timeout"/>
+           <property name="level" value="2"/>
+       </bean>
+}}}
+
+Here's the update method for [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/Nagios.java Nagios] class, events need to have name, value, and colo.  It will send the alert with hostname set to localhost, then message set to "msg" variable.   
+{{{
+  public void update(EventBean[] newEvents, EventBean[] oldEvents) {
+    if (newEvents == null) {
+      return;
+    }
+    for (EventBean newEvent : newEvents) {
+      try {
+        String name = newEvent.get("name").toString();
+        String value = newEvent.get("value").toString();
+        String colo = newEvent.get("colo").toString();
+        String msg;
+        logger.info(
+            " event triggered - type " + type + " - " + colo + " - " + name + " - " + value);
+
+        msg = " event triggered - type " + type + " - " + colo + " - " + name + " - " + value;
+
+        // This builds the message to be sent to nagios.
+        MessagePayload payload = new MessagePayloadBuilder()
+            .withHostname("localhost")
+            .withLevel(level)
+            .withServiceName(service)
+            .withMessage(msg)
+            .create();
+
+        nagiosSender.send(payload);
+
+      } catch (NagiosException e) {
+        logger.error("Nagios sending exception: " + e.getMessage());
+      } catch (Exception e) {
+        logger.error("Problem with event: " + newEvent.toString());
+      }
+
+    }
+  }
+}}}
+
+Nagios server configuration is declared here
+{{{
+  @Autowired
+  private NagiosPassiveCheckSender nagiosSender;
+}}}
+
+From applicationContext.xml, one can find nagiosSender bean. Value for variable like ${nagiosServer} can be find in rocksteady.properties file.
+
+{{{
+  <!-- This is our nagios sender -->
+  <bean class="com.googlecode.jsendnsca.core.NagiosPassiveCheckSender" id="nagiosSender">
+    <constructor-arg>
+		  <bean class="com.googlecode.jsendnsca.core.NagiosSettings" id="nagioSettings">
+		    <property name="nagiosHost" value="${nagiosServer}"/>
+		    <property name="password" value="${nagiosNscaPassword}"/>
+		    <property name="port" value="${nagiosNscaPort}"/>
+		  </bean>     
+    </constructor-arg>
+  </bean>
+}}}
