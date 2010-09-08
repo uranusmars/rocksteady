@@ -56,4 +56,10 @@ Alerting reactor is an all purpose reactor.  It is used to record data to db or 
 
 For each event that fits the query, POJO is sent to *Alerting* bean with property named "type" set to "latency_single".
 
-In Alerting class, 
+In [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/Alerting.java Alerting] class, the method *update" is called automatically, it looks like
+
+{{{
+    public void update(EventBean[] newEvents, EventBean[] oldEvents) {
+}}}
+
+Which Esper will feed the method with new POJO that was captured and old POJO that was evicted out of data window.
