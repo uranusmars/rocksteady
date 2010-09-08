@@ -56,7 +56,7 @@ Alerting reactor is an all purpose reactor(that means messy code).  It is used t
 
 For each event that fits the query, POJO is sent to *Alerting* bean with property named "type" set to "latency_single".
 
-In [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/Alerting.java Alerting] class, the method *update" is called automatically, it looks like
+In [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/Alerting.java Alerting] class, the method *update* is called automatically, it looks like
 
 {{{
     public void update(EventBean[] newEvents, EventBean[] oldEvents) {
