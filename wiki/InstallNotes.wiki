@@ -43,7 +43,7 @@ Run this command to download all rocksteady's Jar dependencies.  Jar is like a t
 
 *`mvn package`*
 
-If anything failed to download, create an "issue" here for others to troubleshoot.
+If anything failed to download, create an "issue" here for others to troubleshoot.  This command will also create distribution zip files.
 
 Setup SQL table and create rocksteady user and privilege
 
@@ -53,7 +53,7 @@ If everything looks good, there will be a new directory called "target" which al
 
 *`cd target`*
 
-Run dev mode
+Run dev mode, useful when testing your customization.
 
 *`../run_dev.sh`*
 
