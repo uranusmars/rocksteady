@@ -4,19 +4,9 @@
 
 Listeners in a statement bean is used to play with data an EPL query capture.  This is where most of us will do customization to Rocksteady.  Each of us probably have different need for the data that was captured by EPL, for instance, for some data, it saves them to DB for later analysis, for some, it emails the data.
 
-For example, following listener will send captured metric to configured graphite host.
-
-{{{
-    <property name="listeners">
-     <list>
-       <bean class="com.admob.rocksteady.reactor.Graphite">
-           <property name="suffix" value="averaged"/>
-       </bean>    
-     </list>
-    </property>
-}}}
-
 Sometimes, there will be statement bean without any listener, chances are, they are just collecting data to be used by other statements.
+
+
 
 = Details =
 
@@ -24,10 +14,12 @@ As mention before, listener is where most people will do their customization.   
 
 There are couple listener Rocksteady comes with, look for them in [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/  this source location].
 
+If you intend to roll out your own listener, refer to "Running from Source" in InstallNotes.  It has instruction for compile and packaging.  Easy, just single maven command.
 
-We'll cover two listener that's used regularly.
+We'll cover couple listener that's used regularly.
  # Alerting
  # Nagios
+ # Graphite
 
 I am hoping by covering two of listener, user can see how easy it is to create your own listener.
 
@@ -175,4 +167,56 @@ From applicationContext.xml, one can find nagiosSender bean. Value for variable 
 		  </bean>     
     </constructor-arg>
   </bean>
+}}}
+
+== Graphite ==
+Following listener will send captured metric to configured graphite host.
+
+{{{
+    <property name="listeners">
+     <list>
+       <bean class="com.admob.rocksteady.reactor.Graphite">
+           <property name="suffix" value="averaged"/>
+       </bean>    
+     </list>
+    </property>
+}}}
+
+Here's what Graphite class expects to have in the class, and append supplied "suffix" property to original metric name.
+{{{
+  public void update(EventBean[] newEvents, EventBean[] oldEvents) {
+
+    if (newEvents == null) {
+      return;
+    }
+    for (EventBean newEvent : newEvents) {
+      try {
+        String name = newEvent.get("name").toString();
+        String value = newEvent.get("value").toString();
+        String colo = newEvent.get("colo").toString();
+        String retention = newEvent.get("retention").toString();
+        String app = newEvent.get("app").toString();
+        String gs;
+        if (retention.isEmpty()) {
+          gs = app + "." + name + "." + colo + "." + suffix + " " + value;
+        } else {
+          gs = retention + "." + app + "." + name + "." + colo + "." + suffix + " " + value;
+        }
+
+        if (gs == null) {
+          logger.error("Null string detected");
+        }
+
+        logger.debug("graphite string:" + gs);
+
+        // Send the data
+        graphiteInterface.send(graphiteInterface.graphiteString(gs));
+
+      } catch (Exception e) {
+        // logger.error("Problem with sending metric to graphite: " +
+        // newEvent.toString());
+      }
+
+    }
+  }
 }}}
