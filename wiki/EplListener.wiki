@@ -54,4 +54,6 @@ Alerting reactor is an all purpose reactor.  It is used to record data to db or 
   </bean>
 }}}
 
-For each event that fits the query, POJO is sent to *Alerting* object with property named "type" set to "latency_single".
+For each event that fits the query, POJO is sent to *Alerting* bean with property named "type" set to "latency_single".
+
+In Alerting class, 
