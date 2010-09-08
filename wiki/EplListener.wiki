@@ -20,7 +20,7 @@ Sometimes, there will be statement bean without any listener, chances are, they 
 
 = Details =
 
-As mention before, listener is where most people will do their customization.   "SELECT" in EPL or SQL declare output fields.  Since POJO is fed into Esper, POJO properties are fields available for "SELECT" as well as aggregation function such as "avg()" or "max()".
+As mention before, listener is where most people will do their customization.   "SELECT" in EPL or SQL declareㄋ output fields.  Since POJO is what gets fed into Esper, POJO properties are fields available for EPL's "SELECT" as well as aggregation function such as "avg()" or "max()".  We need to make sure listeners are using available fields, otherwise it will cause run time error.
 
 There are couple listener Rocksteady comes with, look for them in [http://rocksteady.googlecode.com/svn/trunk/src/main/java/com/admob/rocksteady/reactor/  this source location].
 
@@ -29,7 +29,29 @@ We'll cover two listener that's used regularly.
  # Alerting
  # Nagios
 
+I am hoping by covering two of listener, user can see how easy it is to create your own listener.
+
+
 ==Alerting==
 
-Alerting reactor is an all purpose reactor.  It is used to record data to db or simply write a log line.  Behavior is determined by value supplied to a property  named "type" in each instance of Alerting bean.  
- 
+Alerting reactor is an all purpose reactor.  It is used to record data to db or simply write a log line.  Behavior is determined by value supplied to a property  named "type" in each instance of Alerting bean.  Let's use a statement bean as example:
+
+{{{
+  <bean class="com.admob.rocksteady.router.cep.StatementBean" id="requestTimeOut">
+  <constructor-arg value="SELECT irstream *
+                         FROM Metric(app='admixer')                         
+                         WHERE ((name = 'adworker.timeout_rate' AND value > 5) OR
+                         (name = 'services.profiling.timeouts' AND value > 5) OR
+                         (name = 'adworker.targeting.timeouts.rate' AND value > 5) )                                     
+                         "/>
+    <property name="listeners">
+     <list>
+       <bean class="com.admob.rocksteady.reactor.Alerting">
+           <property name="type" value="latency_single"/>
+       </bean>
+     </list>
+    </property>
+  </bean>
+}}}
+
+For each event that fits the query, POJO is sent to *Alerting* object with property named "type" set to "latency_single".
