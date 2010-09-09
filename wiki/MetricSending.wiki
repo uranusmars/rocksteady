@@ -4,27 +4,6 @@
 
 Sending metric needs to be easy.  That's the premise we set out when we were designing the solution.  After ops install the box, anyone should be able to start sending metric by looking an example.  We made the choice of creating a port listening daemon to accept metric so other app/script is MQ unaware.  This way, all they need is to connect to a port and send those [MetricFormat metrics].
 
-==Testing==
-
-For simple metric sending/receiving test, following instruction can be useful.
-
-Rocksteady comes with a pair of publisher and consumer python scripts to test AMQP service.  Inside [http://rocksteady.googlecode.com/svn/trunk/scripts/ *scripts/*] directory, modify setting.py if you use a different credential or exchange for RabbitMQ.  
-
-These scripts needs python module amqplib, debian can be installed via
-
-`apt-get install python-amqplib`
-
-Start publishing message by running
-{{{
-python amqp_publisher.py
-}}}
-
-Then run consumer to see the messages are going through MQ correctly.
-{{{
-python amqp_consumer.py
-}}}
-
-if your instance of Rocksteady with default config is running, it should be making minutely aggregation once a minute.
 
 == Details ==
 
