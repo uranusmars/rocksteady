@@ -60,4 +60,4 @@ Run dev mode, useful when testing your customization.
 run_dev invokes "mvn compile" then starts rocksteady in dev mode with more verbose log.
 
 ==Now What?==
-Now that your instance of Rocksteady is running, we want to start to feed it some metrics.  Easiest way to do so is to use message publishing scripts that come with Rocksteady.  See [http://code.google.com/p/rocksteady/wiki/MetricSending#Testing Metric Sending] for detail.
+Now that your instance of Rocksteady is running, we want to start to feed it some metrics.  Easiest way to do so is to use message publishing scripts that come with Rocksteady.  See [MetricTestSending test metric sending] for detail.  For full metric sending information, see MetricSending.
