@@ -23,6 +23,8 @@ sudo mysql < setup.sql
 ./start.sh 
 }}}
 
+Start.sh will also attempt to download Esper binary.
+
 ==Running from Source==
 
 *`svn checkout http://rocksteady.googlecode.com/svn/trunk/ rocksteady-read-only`*
@@ -30,6 +32,10 @@ sudo mysql < setup.sql
 Enter the code directory
 
 *`cd rocksteady-read-only`*
+
+Setup SQL table and create rocksteady user and privilege
+
+*`sudo mysql < setup.sql`*
 
 Install maven ( Java source build helper)
 
@@ -44,10 +50,6 @@ Run this command to download all rocksteady's Jar dependencies.  Jar is like a t
 *`mvn package`*
 
 If anything failed to download, create an "issue" here for others to troubleshoot.  This command will also create distribution zip files.
-
-Setup SQL table and create rocksteady user and privilege
-
-*`sudo mysql < setup.sql`*
 
 If everything looks good, there will be a new directory called "target" which all the compiled code and library sit in.
 
