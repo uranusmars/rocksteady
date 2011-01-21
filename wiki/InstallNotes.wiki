@@ -11,7 +11,7 @@ Use your OS equivalent of debian apt-get for following packages.
 
 
 
-==Using Distribution Build==
+==Running from Distribution Build==
 
 Download newest distribution from http://code.google.com/p/rocksteady/downloads/list
 
