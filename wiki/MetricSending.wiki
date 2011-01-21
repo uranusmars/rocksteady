@@ -2,7 +2,7 @@
 
 == Introduction ==
 
-Sending metric needs to be easy.  That's the premise we set out when we were designing the solution.  After ops install the box, anyone should be able to start sending metric by looking an example.  We made the choice of creating a port listening daemon to accept metric so other app/script is MQ unaware.  This way, all they need is to connect to a port and send those [MetricFormat metrics].
+Sending metric needs to be easy.  That's the premise we set out when we were designing the solution.  After ops install the box, anyone should be able to start sending metric by looking an example.  We made the choice of creating a port listening daemon to accept metric so other app/script can be MQ unaware and still send metric.  This way, all they need is to connect to a port and send those [MetricFormat metrics].
 
 
 == Details ==
